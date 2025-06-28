@@ -1,6 +1,6 @@
 ---
 title: "Setting up PostgreSQL on a VPS"
-description: "A complete guide to installing, configuring, and securing PostgreSQL on Ubuntu 24.04 VPS for production use"
+description: "A complete guide to installing, configuring, and securing PostgreSQL on Ubuntu 24.04 VPS for hobby use"
 pubDatetime: 2025-06-28T12:00:00Z
 tags: ["postgresql", "database"]
 featured: true

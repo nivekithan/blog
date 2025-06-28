@@ -3,35 +3,28 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+Hi! I'm **Nivekithan S**, a backend developer with 3 years of experience in building scalable web applications and APIs.
 
-![Astro Paper](public/astropaper-og.jpg)
+## Professional Experience
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+I'm currently working at [epyc.in](https://epyc.in) as a backend developer.
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+## Technical Skills
 
-## Features
+### Backend Development
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+- **Runtime**: Node.js, Cloudflare Workers
+- **Language**: TypeScript (primary)
+- **Database**: PostgreSQL (both professional and personal projects)
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+### Frontend Collaboration
 
-and so much more.
+While I consider myself primarily a backend developer, I also contribute to frontend development:
 
-## Show your support
+- Restructuring React code to minimize unnecessary re-rendering
+- Removing unnecessary `useEffect` hooks following [React's best practices](https://react.dev/learn/you-might-not-need-an-effect)
+- Ensuring proper React Query revalidation and caching strategies
 
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
+## What You'll Find Here
 
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
-
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
-
-Kyay zuu! 🙏🏼
+This blog is where I share my experiences, learnings, and tutorials about backend development, database management, and the occasional frontend insights. Expect posts about PostgreSQL, Node.js, TypeScript, and web development best practices.
