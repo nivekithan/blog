@@ -2,7 +2,7 @@
 title: "Deploy a lambda function written in typescript using cdktf and esbuild"
 description: "Goal behind this blog, is to deploy a `lambda` function in `aws` written in `typescript` using [cdktf](https://www.terraform.io/cdktf) and [esbuild](https://esbuild.github.io/) and make that `lambda` ..."
 pubDatetime: 2022-10-08T17:36:58.243Z
-tags: ["deploy", "lambda", "function"]
+tags: ["aws", "IaC"]
 ---
 
 ## Table of contents

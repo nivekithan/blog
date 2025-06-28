@@ -2,7 +2,7 @@
 title: "Solve Fly.io echo challenge using Deno"
 description: "We will be solving the Echo challenge from [fly.io](http://fly.io) using Deno. I am assuming you have already installed [maelstrom](https://github.com/jepsen-io/maelstrom) and set it up properly."
 pubDatetime: 2023-06-17T07:14:27.674Z
-tags: ["solve", "flyio", "echo"]
+tags: ["dist-sys", "echo"]
 ---
 
 ## Table of contents

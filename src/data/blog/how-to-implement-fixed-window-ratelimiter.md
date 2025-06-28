@@ -2,7 +2,7 @@
 title: "How to implement fixed window Ratelimiter"
 description: "We will be implementing a fixed window ratelimiter using typescript and redis."
 pubDatetime: 2023-07-29T07:35:24.460Z
-tags: ["how", "implement", "fixed"]
+tags: ["redis"]
 ---
 
 ## Table of contents
