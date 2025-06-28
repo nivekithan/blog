@@ -7,8 +7,6 @@ featured: true
 draft: false
 ---
 
-# Setting up PostgreSQL on a VPS
-
 This guide walks you through installing and configuring PostgreSQL on a Ubuntu 24.04 (Noble) VPS, including setting up users, databases, and secure remote connections.
 
 ## Table of contents
