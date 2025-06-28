@@ -4,9 +4,10 @@ export const SITE = {
   profile: "https://github.com/nivekithan",
   desc: "Backend developer sharing insights on Node.js, TypeScript, PostgreSQL, and web development best practices.",
   title: "My Blog",
-  lightAndDarkMode: true,
+  lightAndDarkMode: false,
   postPerIndex: 4,
   postPerPage: 4,
+
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   showBackButton: true, // show back button in post detail
