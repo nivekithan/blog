@@ -7,9 +7,9 @@ featured: true
 draft: false
 ---
 
-All commands are run in Ubuntu 24.04 (Noble) version with postgresql 17 installed. Your system must also have postgresql apt repository setup.
+All commands are run on Ubuntu 24.04 (Noble) with PostgreSQL 17 installed. Your system must also have the PostgreSQL apt repository set up.
 
-Before setting up pgBackRest you must have a `postgresql` database cluster running. Following commands assumes you have configured your database based on my previous blog [Setting up PostgreSQL on a VPS](https://nivekithan.com/posts/setup_postgres_vps/)
+Before setting up pgBackRest, you must have a `postgresql` database cluster running. The following commands assume you have configured your database based on my previous blog [Setting up PostgreSQL on a VPS](https://nivekithan.com/posts/setup_postgres_vps/)
 
 ## Table of contents
 
@@ -19,7 +19,7 @@ Before setting up pgBackRest you must have a `postgresql` database cluster runni
 sudo apt install pgbackrest
 ```
 
-You can verify the installation by
+You can verify the installation by running:
 
 ```sh
 pgbackrest --version
@@ -27,13 +27,13 @@ pgbackrest --version
 
 ### Configuring the `pgBackRest`
 
-Before configuring the `pgBackRest` let's change the our current user to `postgres`
+Before configuring `pgBackRest`, let's change our current user to `postgres`
 
 ```sh
 su - postgres
 ```
 
-`pgBackRest` needs to know the where the `data directory` of `postgresql` is located. You can get path of this directory by running the command
+`pgBackRest` needs to know where the `data directory` of `postgresql` is located. You can get the path of this directory by running the command
 
 ```sh
 pg_lsclusters
@@ -49,20 +49,20 @@ Ver Cluster Port Status Owner    Data directory              Log file
 
 The configuration of `pgBackRest` is stored in the `/etc/pgbackrest.conf` file.
 
-Let's open that file using any file editor and the replace the content with
+Let's open that file using any file editor and replace the content with
 
 ```
 [main]
 pg1-path=/var/lib/postgresql/17/main
 ```
 
-`[main]` is called a `stanza`. Each `stanza` contains configuration options like where data directory is located, how it should be backed up and where it should be backed up.
+`[main]` is called a `stanza`. Each `stanza` contains configuration options like where the data directory is located, how it should be backed up, and where it should be backed up.
 
 ## Creating `pgBackRest` repository
 
-A `repository` is where the `pgBackRest` will store it's backup. It can be configured to same machine as `postgresql` server or some other machine or even `s3`.
+A `repository` is where `pgBackRest` will store its backup. It can be configured to the same machine as the `postgresql` server, some other machine, or even `s3`.
 
-We will be configuring `pgBackRest` to use `s3` .
+We will be configuring `pgBackRest` to use `s3`.
 
 Add these lines to the `/etc/pgbackrest.conf` file
 
@@ -72,17 +72,17 @@ start-fast=y
 repo1-type=s3
 repo1-path=/backup
 repo1-s3-region=<region>
-repo1-s3-bucket=<bucket_nmae>
+repo1-s3-bucket=<bucket_name>
 repo1-s3-key=<access_key>
 repo1-s3-key-secret=<access_key_secret>
 repo1-s3-endpoint=<s3_endpoint>
 ```
 
-## Enable archiving on `postgreSQL`
+## Enable archiving on `PostgreSQL`
 
-Backing up `postgresql` requires `WAL` archiving to be enabled. For that we have to modify the `postgresql.conf` file and enable `WAL` archiving
+Backing up `postgresql` requires `WAL` archiving to be enabled. For that, we have to modify the `postgresql.conf` file and enable `WAL` archiving
 
-To get the path of `postgresql.conf` file run
+To get the path of the `postgresql.conf` file, run
 
 ```sh
 psql -t -P format=unaligned -c 'SHOW config_file;'
@@ -97,7 +97,7 @@ max_wal_senders = 3
 wal_level = replica
 ```
 
-These options requires the `postgresql` cluster restart to take effect.
+These options require the `postgresql` cluster to restart to take effect.
 
 ```sh
 # Must be ran as "root" user
@@ -106,9 +106,9 @@ sudo systemctl restart postgresql@17-main.service
 
 ## Retention policy
 
-We don't need to keep our backups indefinitely. In my case I only want to keep two full backups of the database.
+We don't need to keep our backups indefinitely. In my case, I only want to keep two full backups of the database.
 
-So we configure the `/etc/pgbackrest.conf` file and these lines to the `[global]` section
+So we configure the `/etc/pgbackrest.conf` file and add these lines to the `[global]` section
 
 ```
 [global]
@@ -118,15 +118,15 @@ repo1-retention-full=2
 
 ## Initialising the `pgBackRest` stanza
 
-The configuration of `pgBackRest` is complete. Before we start taking backup we have to initialise the stanza.
+The configuration of `pgBackRest` is complete. Before we start taking backups, we have to initialize the stanza.
 
 ```sh
 pgbackrest --stanza=main --log-level-console=info stanza-create
 ```
 
-If everything is configured properly you should see a new directory on `s3 bucket` with name `backup` which contains two more directory `archive` and `backup`
+If everything is configured properly, you should see a new directory on the `s3 bucket` with the name `backup` which contains two more directories: `archive` and `backup`
 
-To better verification we can run
+For better verification, we can run
 
 ```sh
 pgbackrest --stanza=main --log-level-console=info check
@@ -140,13 +140,13 @@ You should see output similar to
 
 ## Taking a backup
 
-To take backup manually
+To take a backup manually
 
 ```sh
 pgbackrest --stanza=main --log-level-console=info backup
 ```
 
-The first backup is always an "full backup".
+The first backup is always a "full backup".
 
 There are three types of backups
 
@@ -158,19 +158,19 @@ There are three types of backups
 
 They take backup of all the files in your `postgresql` cluster.
 
-They are huge in size or takes more time to take.
+They are huge in size and take more time to complete.
 
 #### Differential backups
 
-They take backup of only the files which has been changed from the last `full backup`
+They take backup of only the files which have been changed from the last `full backup`
 
 #### Incremental backups
 
-They take backups of only the files which has been changed from the last `full backup` or `differential` backup
+They take backups of only the files which have been changed from the last `full backup` or `differential` backup
 
 ## Automated backups
 
-Right now we are taking backups manually, we want to change it so that backups will taken automatically.
+Right now we are taking backups manually, but we want to change it so that backups will be taken automatically.
 
 This can be done using `cron`
 
@@ -187,18 +187,18 @@ And insert this content
 30 06 * * 1-6 pgbackrest --type=diff --stanza=main backup
 ```
 
-This set's up two cron jobs which
+This sets up two cron jobs which
 
-1. Takes `full` database backup on every Sunday on 06:30 AM
-2. Takes `diff` database backup of every other day on 06:30 AM
+1. Takes a `full` database backup every Sunday at 06:30 AM
+2. Takes a `diff` database backup every other day at 06:30 AM
 
 ## Simulating data corruption
 
-We will restore the backups from our s3 bucket when there is data corruption or hard failure.
+We will restore the backups from our S3 bucket when there is data corruption or hardware failure.
 
-To simulate the data corruption we are going to delete files from `postgresql` data directory
+To simulate data corruption, we are going to delete files from the `postgresql` data directory
 
-First let's stop `postgresql` cluster
+First, let's stop the `postgresql` cluster
 
 ```sh
 # as root user
@@ -206,14 +206,14 @@ First let's stop `postgresql` cluster
 sudo systemctl stop postgresql@17-main.service
 ```
 
-Then let's delete the `pg_wal`
+Then let's delete the `pg_wal` directory
 
 ```sh
 # as postgres user
 rm -rf /var/lib/postgresql/17/main/pg_wal/
 ```
 
-Now if we try to start the postgresql cluster again we get an error
+Now if we try to start the PostgreSQL cluster again, we get an error
 
 ```sh
 # as root user
@@ -263,13 +263,13 @@ To restore from backup
 find /var/lib/postgresql/17/main -mindepth 1 -delete
 ```
 
-2. Run restore command from `pgBackRest
+2. Run the restore command from `pgBackRest`
 
 ```sh
 pgbackrest --stanza=main --log-level-console=detail restore
 ```
 
-If the restore completed successfully, you can see the output similar to
+If the restore completed successfully, you can see output similar to
 
 ```sh
 2025-06-29 13:08:34.859 P00 DETAIL: sync path '/var/lib/postgresql/17/main/global'
@@ -278,7 +278,7 @@ If the restore completed successfully, you can see the output similar to
 2025-06-29 13:08:34.875 P00   INFO: restore command end: completed successfully (658489ms)
 ```
 
-Now we can start the `postgres` cluster again without any issue
+Now we can start the `postgres` cluster again without any issues
 
 ```sh
 # as root user
