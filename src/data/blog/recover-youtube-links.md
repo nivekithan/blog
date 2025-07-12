@@ -13,7 +13,7 @@ draft: false
 
 Have you ever dealt with a sneaky bug that corrupts data in ways that seem impossible to fix? That's exactly what happened to our team when a frontend glitch started lowercasing YouTube video URLs before they hit our API and database. What started as a valid link like `https://www.youtube.com/watch?v=urEaHW-emY4` ended up stored as `https://www.youtube.com/watch?v=ureahw-emy4`—completely broken. No logs, no traces, just invalid URLs pointing to non-existent videos.
 
-But despair not! With a bit of clever brute-forcing and the right tools, we recovered the originals. In this post, I'll walk you through the problem, our "unless..." moment, and a practical script to fix it. Spoiler: It involves generating up to 2,048 permutations and validating them like a boss.
+But despair not! With a bit of clever brute-forcing and the right tools, we recovered the originals. In this post, I'll walk you through the problem, our "unless..." moment, and a practical script to fix it. Spoiler: It involves generating up to 2,048 permutations and validating them like a boss a thousand times.
 
 ## The Problem: Lowercased YouTube URLs
 
