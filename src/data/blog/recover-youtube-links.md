@@ -3,7 +3,7 @@ title: "Recovering Mangled YouTube URLs: A Brute-Force Adventure"
 description: "How to recover corrupted YouTube URLs using brute-force permutations and yt-dlp validation when a frontend bug lowercases video IDs"
 pubDatetime: 2025-07-12T00:00:00Z
 tags: ["youtube", "debugging", "data-recovery", "bash"]
-featured: false
+featured: true
 draft: false
 ---
 
