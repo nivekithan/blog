@@ -3,6 +3,7 @@ title: "Implementing Levenshtein Distance Check in Kotlin"
 description: "Learn how to implement a recursive Levenshtein distance checker in Kotlin that determines if two words are within a specified edit distance."
 pubDatetime: 2025-10-23T00:00:00.000Z
 tags: ["kotlin", "algorithms", "Levenshtein"]
+featured: true
 ---
 
 ## Table of contents
