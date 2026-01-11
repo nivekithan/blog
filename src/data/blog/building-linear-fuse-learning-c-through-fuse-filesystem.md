@@ -8,6 +8,8 @@ featured: true
 
 ## Table of contents
 
+### Intro
+
 This is about my experience building `linear-fuse` - a FUSE filesystem that lets you browse your Linear projects and issues as if they were regular files and folders on your computer.
 
 Here's what it does:
