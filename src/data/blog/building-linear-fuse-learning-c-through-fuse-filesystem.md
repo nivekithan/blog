@@ -1,7 +1,7 @@
 ---
 title: "Building linear-fuse: Learning C through a FUSE filesystem"
 description: "My experience building a FUSE filesystem that lets you browse Linear projects and issues as files and folders, and what I learned about C programming along the way."
-pubDatetime: 2025-01-11T00:00:00.000Z
+pubDatetime: 2026-01-11T00:00:00.000Z
 tags: ["c", "fuse", "linear", "filesystem"]
 featured: true
 ---
