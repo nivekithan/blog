@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 544" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#F8F8F2"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #282A36; stroke-width: 2; }
+    .title { fill: #F8F8F2; font-size: 26px; font-weight: 600; text-anchor: middle; }
+    .sub { fill: #A4A9C2; font-size: 17px; font-family: ui-monospace, "JetBrains Mono", monospace; text-anchor: middle; }
+    .edge { stroke: #F8F8F2; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .dashed { stroke: #6272A4; stroke-width: 2; fill: none; stroke-dasharray: 6 5; }
+    .label { fill: #F8F8F2; font-size: 18px; }
+    .group { fill: none; stroke: #BD93F9; stroke-opacity: 0.5; stroke-width: 1.6; stroke-dasharray: 8 6; }
+    .group-label { fill: #BD93F9; font-size: 16px; font-weight: 600; letter-spacing: 0.08em; }
+  </style>
+
+  <rect width="960" height="544" rx="16" fill="#1e1f29"/>
+
+  <rect class="group" x="244" y="138" width="704" height="394" rx="14"/>
+  <text class="group-label" x="262" y="166">CLOUDFLARE</text>
+
+  <rect class="box" x="24" y="228" width="180" height="90" rx="12" stroke="#8BE9FD"/>
+  <text class="title" x="114" y="266">Browser</text>
+  <text class="sub" x="114" y="295">dockerpeek UI</text>
+
+  <rect class="box" x="430" y="16" width="290" height="90" rx="12" stroke="#FFB86C"/>
+  <text class="title" x="575" y="54">Container registry</text>
+  <text class="sub" x="575" y="84">Docker Hub, GHCR, ECR</text>
+
+  <rect class="box" x="274" y="228" width="232" height="90" rx="12" stroke="#BD93F9"/>
+  <text class="title" x="390" y="266">API Worker</text>
+  <text class="sub" x="390" y="295">resolve, list, read</text>
+
+  <rect class="box" x="690" y="228" width="246" height="90" rx="12" stroke="#BD93F9"/>
+  <text class="title" x="813" y="266">Workflow</text>
+  <text class="sub" x="813" y="295">image-indexer</text>
+
+  <rect class="box" x="490" y="150" width="170" height="62" rx="12" stroke="#6272A4"/>
+  <text class="title" x="575" y="177" font-size="20">KV</text>
+  <text class="sub" x="575" y="201" font-size="14">registry tokens</text>
+
+  <rect class="box" x="455" y="432" width="240" height="90" rx="12" stroke="#50FA7B"/>
+  <text class="title" x="575" y="470">R2</text>
+  <text class="sub" x="575" y="499">tars, indexes, shards</text>
+
+  <path class="edge" d="M204 273 L272 273"/>
+
+  <path class="edge" d="M506 273 L688 273"/>
+  <text class="label" x="597" y="262" text-anchor="middle">start indexing</text>
+
+  <path class="edge" d="M420 228 L520 108"/>
+  <text class="label" x="452" y="126" text-anchor="end">resolve tag</text>
+
+  <path class="edge" d="M790 228 L650 108"/>
+  <text class="label" x="702" y="126">download layers</text>
+
+  <path class="edge" d="M420 318 L520 430"/>
+  <text class="label" x="458" y="384" text-anchor="end">listings, range reads</text>
+
+  <path class="edge" d="M790 318 L650 430"/>
+  <text class="label" x="744" y="384">write</text>
+
+  <path class="dashed" d="M490 194 L452 228"/>
+  <path class="dashed" d="M660 194 L700 228"/>
+</svg>
