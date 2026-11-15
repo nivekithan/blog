@@ -1,4 +1,7 @@
 allowBuilds:
+  core-js: false
   '@tailwindcss/oxide': true
   esbuild: true
   sharp: true
+minimumReleaseAgeExclude:
+  - posthog-js@1.449.2

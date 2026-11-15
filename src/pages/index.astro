@@ -52,16 +52,6 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         </LinkButton>. I mainly work with Node.js/Cloudflare Workers using TypeScript, 
         and PostgreSQL for databases.
       </p>
-      <p class="mt-2">
-        While I consider myself a backend developer, I also help with frontend tasks - 
-        from restructuring React code to minimize rendering, removing unnecessary 
-        <LinkButton
-          class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href="https://react.dev/learn/you-might-not-need-an-effect"
-        >
-          useEffects
-        </LinkButton>, and ensuring React Query revalidation works properly.
-      </p>
       {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
